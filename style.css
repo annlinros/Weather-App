@@ -1,0 +1,54 @@
+body{
+    height: 100vh;
+    background: #80B4E6;
+    font-size: 62.5%;
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-gap: 15rem;
+    justify-items: center;
+    align-content: center;
+}
+.user_search{
+    width: 40vw;
+    font-size: 2rem;
+    text-align: center;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    outline: none;
+    padding: .1rem 1rem
+
+}
+.output{
+    width:30rem;
+    padding: 1rem;
+    height:100%;
+    text-align: center;
+    border-radius: 1.8rem;
+    background-color: rgba(255,255,255,0.8);
+    display:none;
+ }
+.weather_results{
+    font-style: bold;
+    font-size: 2rem;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+}
+.weather_results .city{
+    flex-basis: 100%;
+}
+.weather_results .weather_details{
+    display: flex;
+    align-items: flex-end;
+}
+.weather_details .temp{
+    font-size: 2.5rem;
+    padding-right: 1.5rem;
+}
+.output hr{
+  border: .05rem solid #000;
+}
+.other > * {
+  text-align: right;
+}
