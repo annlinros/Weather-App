@@ -1,54 +1,60 @@
 body{
-    height: 100vh;
     background: #80B4E6;
     font-size: 62.5%;
+    color: #fff;
+}
+.weather{
+    height: 95vh;
     display:grid;
     grid-template-columns: 1fr;
     grid-gap: 15rem;
     justify-items: center;
-    align-content: center;
+    align-content: center; 
 }
 .user_search{
-    width: 40vw;
+    width: 30vw;
     font-size: 2rem;
+    padding: .5rem 10rem;
     text-align: center;
     background: transparent;
     border: none;
-    border-bottom: 1px solid #000000;
+    border-bottom: .01rem solid #000;
     outline: none;
-    padding: .1rem 1rem
-
+    color:#fff;
 }
-.output{
+ .output{
     width:30rem;
     padding: 1rem;
-    height:100%;
-    text-align: center;
-    border-radius: 1.8rem;
-    background-color: rgba(255,255,255,0.8);
-    display:none;
- }
+}
 .weather_results{
-    font-style: bold;
-    font-size: 2rem;
-    text-align: left;
+    text-align: center;
+}
+.city{
+    font-size: 3rem;
+    padding: 2rem;
+    margin: 0;
+}
+.temp{
+    font-size: 8rem;
+}
+.weather_details{
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-around;
 }
-.weather_results .city{
-    flex-basis: 100%;
-}
-.weather_results .weather_details{
-    display: flex;
-    align-items: flex-end;
-}
-.weather_details .temp{
+.weather_description{
     font-size: 2.5rem;
-    padding-right: 1.5rem;
+}
+.weather_icon{
+    height: 10rem;
 }
 .output hr{
-  border: .05rem solid #000;
+  border: .05rem solid #fff;
 }
 .other > * {
-  text-align: right;
+    font-size: 1.5rem;
+    text-align: right;
+}
+footer{
+    font-size: .8rem;
+    text-align: center;
 }
