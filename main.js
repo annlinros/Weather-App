@@ -18,7 +18,7 @@ function getWeather(){
         .then(data =>  {
             console.log(data)
             weatherIcon(data)
-            showWeather(data)
+            displayWeather(data)
         })
         .catch(error => {
             invalidInput(error)
@@ -57,7 +57,7 @@ function weatherIcon(weather){
 }  
 
 /* Displaying the weather information */
-function showWeather(weather){
+function displayWeather(weather){
 
     document.querySelector(".output").innerHTML = 
         `<div class="weather_results">
