@@ -1,3 +1,4 @@
+
 /* API Key */
 const apiKey = "8f7dfcf3b43d0c401d33a212979b7e78";
 const units = "Metric";
@@ -9,7 +10,7 @@ function searchWeather(){
 
 /* Fetching weather information from API */
 function getWeather(){
-    const searchItem = document.querySelector(".user_search").value;
+    const searchItem = document.querySelector(".search").value;
     const weatherApi = `http://api.openweathermap.org/data/2.5/weather?q=${searchItem}&APPID=${apiKey}&units=${units}`
         
     fetch(weatherApi)
@@ -18,6 +19,9 @@ function getWeather(){
             console.log(data)
             weatherIcon(data)
             showWeather(data)
+        })
+        .catch(error => {
+            invalidInput(error)
         })
 } 
 /* A function to generate different weather icons according to the output from the API */
@@ -52,7 +56,6 @@ function weatherIcon(weather){
     return icon;
 }  
 
-
 /* Displaying the weather information */
 function showWeather(weather){
 
@@ -62,7 +65,7 @@ function showWeather(weather){
             <div class="temp">${Math.round(weather.main.temp)}°C</div>
             <div class="weather_details">
                 <span class="weather_description">${weather.weather[0].description}</span>
-                <img src= ${weatherIcon(weather)} class="weather_icon">
+                <img class="weather_icon" src= ${weatherIcon(weather)}>
             </div>
         </div>
         <hr>
@@ -72,5 +75,10 @@ function showWeather(weather){
         </div>`
 }
 
+/* When the user input is not found/valid */
+function invalidInput(){
+    document.querySelector(".output").innerHTML = `<p class="alert"> Sorry! City is not found.`
+}
+
 /* Event Listener for Enter key up */      
-document.querySelector(".user_search").addEventListener("keyup", searchWeather);
+document.querySelector(".search").addEventListener("keyup", searchWeather);
