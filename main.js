@@ -21,7 +21,7 @@ function getWeather(){
             displayWeather(data)
         })
         .catch(error => {
-            invalidInput(error)
+            invalidInput()
         })
 } 
 /* A function to generate different weather icons according to the output from the API */
@@ -41,7 +41,7 @@ function weatherIcon(weather){
                     break;
         case "Snow": icon +=  "weather_icons/snowy-6.svg";
                     break;
-        case "Atmosphere": icon +=  "http://openweathermap.org/img/w/${weather.weather[0].icon}.png";
+        case "Haze": icon +=  "weather_icons/haze.png";
                     break;
         case "Clear": if(weather_icon === "01d") {icon +=  "weather_icons/day.svg"}
                     else { icon +=  "weather_icons/night.svg"};
@@ -50,7 +50,7 @@ function weatherIcon(weather){
                     else if( weather_icon === "02n" || "04n"){ icon +=  "weather_icons/cloudy-night-3.svg"}
                     else { icon +=  "weather_icons/cloudy.svg" };
                     break; 
-        default: icon +=  "weather_icons/day.svg";
+        default: icon +=  "weather_icons/mist.svg";
                     break;
     }
     return icon;
