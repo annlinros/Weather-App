@@ -3,12 +3,15 @@
 const apiKey = "8f7dfcf3b43d0c401d33a212979b7e78";
 const units = "Metric";
 
+                        /*  WEATHER API   */
+
 /* When enter key is up, getWeather() fires */
 function searchWeather(){
     if (event.keyCode === 13) {getWeather()};
 }
 
 /* Fetching weather information from API */
+
 function getWeather(){
     const searchItem = document.querySelector(".search").value;
     const weatherApi = `http://api.openweathermap.org/data/2.5/weather?q=${searchItem}&APPID=${apiKey}&units=${units}`
@@ -56,29 +59,74 @@ function weatherIcon(weather){
     return icon;
 }  
 
-/* Displaying the weather information */
+/* Displays weather information */
 function displayWeather(weather){
 
-    document.querySelector(".output").innerHTML = 
-        `<div class="weather_results">
-            <h2 class="city">${weather.name}, ${weather.sys.country}</h2>
-            <div class="temp">${Math.round(weather.main.temp)}°C</div>
-            <div class="weather_details">
-                <span class="weather_description">${weather.weather[0].description}</span>
-                <img class="weather_icon" src= ${weatherIcon(weather)}>
-            </div>
-        </div>
-        <hr>
-        <div class="other">
-            <p>Winds at ${weather.wind.speed} m/s</p>
-            <p>Humidity levels at ${weather.main.humidity}%</p>
-        </div>`
+    document.querySelector(".output").innerHTML =   `<div class="weather_results">                                             
+                                                        <h2 class="city">${weather.name}, ${weather.sys.country}</h2>
+                                                        <div class="temp">${Math.round(weather.main.temp)}°C</div>
+                                                        <div class="weather_details">
+                                                            <span class="weather_description">${weather.weather[0].description}</span>
+                                                            <img class="weather_icon" src= ${weatherIcon(weather)}>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="other">
+                                                        <p>Winds at ${weather.wind.speed} m/s</p>
+                                                        <p>Humidity levels at ${weather.main.humidity}%</p>
+                                                    </div>`;
+
+    document.querySelector(".forecast_search").style.display = "block";
+
 }
+
+                    /*  FORECAST API   */
+
+/* Fetching forecast information from API */
+function getForecast(){
+    const searchItem = document.querySelector(".search").value;
+    const forecastApi = `http://api.openweathermap.org/data/2.5/forecast?q=${searchItem}&APPID=${apiKey}&units=${units}`;
+
+    fetch(forecastApi)
+        .then(response => response.json())
+        .then(data =>  {
+            console.log(data)
+            displayForecast(data)
+        })
+        .catch(error => {
+            invalidInput()
+        })
+}
+
+/* Displays forecast information */
+function displayForecast(forecast){
+
+    const days =  (forecast.list).filter(days => days.dt_txt.includes("12:00:00"))
+    console.log(days)
+
+   document.querySelector(".forecast_output").innerHTML = days.map(day =>  
+                                        `<div class="forecast_results">
+                                            <p class="forecast_day">${(day.dt_txt).slice(8,10)}th</p>
+                                            <p class="forecast_temp">${Math.round(day.main.temp)}°C</p>
+                                            <img class="icon" src= ${weatherIcon(day)}>
+                                        </div>`
+    ).join(""); 
+    document.querySelector(".forecast_search").style.display = "none";
+
+
+}
+
+
 
 /* When the user input is not found/valid */
 function invalidInput(){
     document.querySelector(".output").innerHTML = `<p class="alert"> Sorry! City is not found.`
+    document.querySelector(".forecast_output").innerHTML = "";
 }
 
 /* Event Listener for Enter key up */      
 document.querySelector(".search").addEventListener("keyup", searchWeather);
+
+/* Event listener for 5 days forecast */
+document.querySelector(".forecast_search").addEventListener("click", getForecast);
+ 

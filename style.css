@@ -2,19 +2,19 @@ body{
     height: 100vh;
     font-size: 62.5%;
     color:  #fff;
-    background: linear-gradient(to bottom, #245A92, #649CD6 , #BBD4EE );
-
-    
+    background: linear-gradient(to bottom, #BBD4EE, #649CD6 ,  #245A92); 
+    display:flex; 
+    flex-direction:column;   
 }
-.weather{
-    height: 95vh;
+.weather , .forecast{
+    height: 75vh;
     display:grid;
     grid-template-columns: 1fr;
     grid-gap: 15rem;
     justify-items: center;
     align-content: center; 
 }
-.search{
+.search, .forecast_search {
     width: 20rem;
     height: 2.5rem;
     font-size: 1.1rem;
@@ -30,19 +30,19 @@ body{
     text-align: center;
 }
 .city{
-    font-size: 3rem;
+    font-size: 2.5rem;
     padding: 2rem;
     margin: 0;
 }
 .temp{
-    font-size: 7rem;
+    font-size: 5rem;
 }
 .weather_details{
     display: flex;
     justify-content: center;
 }
 .weather_description{
-    font-size: 2.5rem;
+    font-size: 1.7rem;
     align-self: center;
 }
 .weather_icon{
@@ -52,8 +52,46 @@ body{
   border: .05rem solid #fff;
 }
 .other > * {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: right;
+}
+/* forcast section */
+.forecast{
+    height:15vh;
+    grid-gap: 1rem;
+    margin: 0;
+}
+.forecast_search{
+    width: 10rem;
+    background: #E1AD01;
+    color: #fff;
+    border-radius: .5rem;
+    display: none;
+}
+.forecast_search:hover{
+    background: #ffdb58;
+}
+
+.forecast_output{
+    width: auto;
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+}
+.forecast_results{
+    padding: .4rem;
+    text-align: center;
+}
+.forecast_day{
+    font-size: 1.2rem;
+}
+.forecast_temp{
+    font-size: 1.5rem;
+    margin: 0;
+
+}
+.icon{
+    height: 6rem;;
 }
 .alert{
     font-size: 2.5rem;
@@ -61,5 +99,9 @@ body{
 footer{
     font-size: .8rem;
     text-align: center;
-    color: #000;
+    padding: 2rem;
+    margin-top:auto; 
+}
+a{
+    color: #fff;
 }
