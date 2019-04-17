@@ -10,7 +10,7 @@ function searchWeather(){
     if (event.keyCode === 13) {getWeather()};
 }
 
-/* Fetching weather information from API */
+/* Fetches weather information from API */
 
 function getWeather(){
     const searchItem = document.querySelector(".search").value;
@@ -19,7 +19,6 @@ function getWeather(){
     fetch(weatherApi)
         .then(response => response.json())
         .then(data =>  {
-            console.log(data)
             weatherIcon(data)
             displayWeather(data)
         })
@@ -77,12 +76,12 @@ function displayWeather(weather){
                                                     </div>`;
 
     document.querySelector(".forecast_search").style.display = "block";
-
+    document.querySelector(".forecast_output").innerHTML = "";
 }
 
                     /*  FORECAST API   */
 
-/* Fetching forecast information from API */
+/* Fetches forecast information from API */
 function getForecast(){
     const searchItem = document.querySelector(".search").value;
     const forecastApi = `http://api.openweathermap.org/data/2.5/forecast?q=${searchItem}&APPID=${apiKey}&units=${units}`;
@@ -90,7 +89,6 @@ function getForecast(){
     fetch(forecastApi)
         .then(response => response.json())
         .then(data =>  {
-            console.log(data)
             displayForecast(data)
         })
         .catch(error => {
@@ -100,28 +98,23 @@ function getForecast(){
 
 /* Displays forecast information */
 function displayForecast(forecast){
-
     const days =  (forecast.list).filter(days => days.dt_txt.includes("12:00:00"))
-    console.log(days)
+    document.querySelector(".forecast_output").innerHTML = days.map(day =>  
+                                                                        `<div class="forecast_results">
+                                                                            <p class="forecast_day">${(day.dt_txt).slice(8,10)}th</p>
+                                                                            <p class="forecast_temp">${Math.round(day.main.temp)}°C</p>
+                                                                            <img class="icon" src= ${weatherIcon(day)}>
+                                                                        </div>`).join(""); 
 
-   document.querySelector(".forecast_output").innerHTML = days.map(day =>  
-                                        `<div class="forecast_results">
-                                            <p class="forecast_day">${(day.dt_txt).slice(8,10)}th</p>
-                                            <p class="forecast_temp">${Math.round(day.main.temp)}°C</p>
-                                            <img class="icon" src= ${weatherIcon(day)}>
-                                        </div>`
-    ).join(""); 
     document.querySelector(".forecast_search").style.display = "none";
-
-
 }
-
-
 
 /* When the user input is not found/valid */
 function invalidInput(){
     document.querySelector(".output").innerHTML = `<p class="alert"> Sorry! City is not found.`
+    document.querySelector(".forecast_search").style.display = "none";
     document.querySelector(".forecast_output").innerHTML = "";
+
 }
 
 /* Event Listener for Enter key up */      
