@@ -1,107 +1,110 @@
-body{
-    height: 100vh;
-    font-size: 62.5%;
-    color:  #fff;
-    background: linear-gradient(to bottom, #BBD4EE, #649CD6 ,  #245A92); 
-    display:flex; 
-    flex-direction:column;   
+:root {
+  font-size: 62.5%;
 }
-.weather , .forecast{
-    height: 75vh;
-    display:grid;
-    grid-template-columns: 1fr;
-    grid-gap: 15rem;
-    justify-items: center;
-    align-content: center; 
+body {
+  height: 100vh;
+  color: #fff;
+  background: linear-gradient(to bottom, #bbd4ee, #649cd6, #245a92);
+  display: flex;
+  flex-direction: column;
 }
-.search, .forecast_search {
-    width: 20rem;
-    height: 2.5rem;
-    font-size: 1.1rem;
-    text-align: center;
-    border-radius: 1rem;
-    border: none;
-    outline: none;
+.weather,
+.forecast {
+  height: 75vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 15rem;
+  justify-items: center;
+  align-content: center;
 }
- .output{
-    width:25rem;
+.search,
+.forecast_search {
+  width: 20rem;
+  height: 2.5rem;
+  font-size: 1.1rem;
+  text-align: center;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
 }
-.weather_results{
-    text-align: center;
+.output {
+  width: 25rem;
 }
-.city{
-    font-size: 2.5rem;
-    padding: 2rem;
-    margin: 0;
+.weather_results {
+  text-align: center;
 }
-.temp{
-    font-size: 5rem;
+.city {
+  font-size: 2.5rem;
+  padding: 2rem;
+  margin: 0;
 }
-.weather_details{
-    display: flex;
-    justify-content: center;
+.temp {
+  font-size: 5rem;
 }
-.weather_description{
-    font-size: 1.7rem;
-    align-self: center;
+.weather_details {
+  display: flex;
+  justify-content: center;
 }
-.weather_icon{
-    height: 10rem;
+.weather_description {
+  font-size: 1.7rem;
+  align-self: center;
 }
-.output hr{
-  border: .05rem solid #fff;
+.weather_icon {
+  height: 10rem;
+}
+.output hr {
+  border: 0.05rem solid #fff;
 }
 .other > * {
-    font-size: 1.2rem;
-    text-align: right;
+  font-size: 1.2rem;
+  text-align: right;
 }
 /* forcast section */
-.forecast{
-    height:15vh;
-    grid-gap: 1rem;
-    margin: 0;
+.forecast {
+  height: 15vh;
+  grid-gap: 1rem;
+  margin: 0;
 }
-.forecast_search{
-    width: 10rem;
-    background: #E1AD01;
-    color: #fff;
-    border-radius: .5rem;
-    display: none;
+.forecast_search {
+  width: 10rem;
+  background: #e1ad01;
+  color: #fff;
+  border-radius: 0.5rem;
+  display: none;
 }
-.forecast_search:hover{
-    background: #ffdb58;
+.forecast_search:hover {
+  background: #ffdb58;
 }
 
-.forecast_output{
-    width: auto;
-    height: 15rem;
-    display: flex;
-    justify-content: center;
+.forecast_output {
+  width: auto;
+  height: 15rem;
+  display: flex;
+  justify-content: center;
 }
-.forecast_results{
-    padding: .4rem;
-    text-align: center;
+.forecast_results {
+  padding: 0.4rem;
+  text-align: center;
 }
-.forecast_day{
-    font-size: 1.2rem;
+.forecast_day {
+  font-size: 1.2rem;
 }
-.forecast_temp{
-    font-size: 1.5rem;
-    margin: 0;
-
+.forecast_temp {
+  font-size: 1.5rem;
+  margin: 0;
 }
-.icon{
-    height: 6rem;;
+.icon {
+  height: 6rem;
 }
-.alert{
-    font-size: 2.5rem;
+.alert {
+  font-size: 2.5rem;
 }
-footer{
-    font-size: .8rem;
-    text-align: center;
-    padding: 2rem;
-    margin-top:auto; 
+footer {
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 2rem;
+  margin-top: auto;
 }
-a{
-    color: #fff;
+a {
+  color: #fff;
 }
