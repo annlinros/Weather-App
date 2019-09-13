@@ -118,7 +118,7 @@ function displayWeather(weather) {
 /* Fetches forecast information from API */
 function getForecast() {
   const searchItem = document.querySelector(".search").value;
-  const forecastApi = `http://api.openweathermap.org/data/2.5/forecast?q=${searchItem}&APPID=${apiKey}&units=${units}`;
+  const forecastApi = `https://api.openweathermap.org/data/2.5/forecast?q=${searchItem}&APPID=${apiKey}&units=${units}`;
 
   fetch(forecastApi)
     .then(response => response.json())
